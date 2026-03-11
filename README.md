@@ -7,6 +7,11 @@ A comprehensive full-stack web application for analyzing Indian Premier League (
 ![Node.js](https://img.shields.io/badge/Node.js-16+-green)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-orange)
 
+## ER Diagram
+
+![IPL Management ER Diagram](Screenshots/IPL%20Management%20ER%20Diagram%20.png)
+
+
 ## 🌟 Features
 
 - **Season Analytics**: View season-wise performance, points tables, and award winners
