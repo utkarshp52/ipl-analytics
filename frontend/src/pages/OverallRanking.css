@@ -1,0 +1,186 @@
+.ranking-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.ranking-header h1 {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text-primary);
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.ranking-header p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+.ranking-table-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: var(--glass-shadow);
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ranking-table thead {
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--text-secondary);
+}
+
+.ranking-table th {
+  padding: 1.2rem 1rem;
+  text-align: left;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.ranking-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--surface-border);
+  color: var(--text-primary);
+}
+
+.ranking-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.ranking-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.top-team {
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.top-team:hover {
+  background: rgba(212, 175, 55, 0.1) !important;
+}
+
+.rank-cell {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center !important;
+  width: 80px;
+}
+
+.team-cell-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.team-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.wins {
+  color: var(--accent-secondary);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.win-percentage {
+  color: var(--accent-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.stats-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.stat-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--surface-border);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.stat-card h3 {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text-primary);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.stat-card p {
+  color: var(--text-muted);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.error-message {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.error-message h2 {
+  color: #e74c3c;
+  margin-bottom: 1rem;
+}
+
+.retry-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.retry-btn:hover {
+  background: #764ba2;
+}
+
+@media (max-width: 768px) {
+  .ranking-table {
+    font-size: 0.9rem;
+  }
+
+  .ranking-table th,
+  .ranking-table td {
+    padding: 0.7rem 0.5rem;
+  }
+
+  .ranking-header h1 {
+    font-size: 2rem;
+  }
+}

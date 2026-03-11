@@ -1,0 +1,174 @@
+{
+  "name": "IPL Analytics API",
+  "folders": [
+    {
+      "name": "Health & Root",
+      "requests": [
+        {
+          "name": "Root",
+          "method": "GET",
+          "url": "http://localhost:5000/",
+          "headers": []
+        },
+        {
+          "name": "Health Check",
+          "method": "GET",
+          "url": "http://localhost:5000/api/health",
+          "headers": []
+        }
+      ]
+    },
+    {
+      "name": "Seasons",
+      "requests": [
+        {
+          "name": "Get All Seasons",
+          "method": "GET",
+          "url": "http://localhost:5000/api/seasons",
+          "headers": []
+        },
+        {
+          "name": "Get Season by ID",
+          "method": "GET",
+          "url": "http://localhost:5000/api/seasons/1",
+          "headers": []
+        },
+        {
+          "name": "Get Season Points Table",
+          "method": "GET",
+          "url": "http://localhost:5000/api/seasons/1/points",
+          "headers": []
+        },
+        {
+          "name": "Get Season Matches",
+          "method": "GET",
+          "url": "http://localhost:5000/api/seasons/1/matches",
+          "headers": []
+        }
+      ]
+    },
+    {
+      "name": "Teams",
+      "requests": [
+        {
+          "name": "Get All Teams",
+          "method": "GET",
+          "url": "http://localhost:5000/api/teams",
+          "headers": []
+        },
+        {
+          "name": "Get Team by ID",
+          "method": "GET",
+          "url": "http://localhost:5000/api/teams/1",
+          "headers": []
+        },
+        {
+          "name": "Get Team History",
+          "method": "GET",
+          "url": "http://localhost:5000/api/teams/1/history",
+          "headers": []
+        },
+        {
+          "name": "Get Team Best Season",
+          "method": "GET",
+          "url": "http://localhost:5000/api/teams/1/best-season",
+          "headers": []
+        },
+        {
+          "name": "Get Team Stats",
+          "method": "GET",
+          "url": "http://localhost:5000/api/teams/1/stats",
+          "headers": []
+        }
+      ]
+    },
+    {
+      "name": "Matches",
+      "requests": [
+        {
+          "name": "Get All Matches",
+          "method": "GET",
+          "url": "http://localhost:5000/api/matches?limit=20",
+          "headers": []
+        },
+        {
+          "name": "Get Match by ID",
+          "method": "GET",
+          "url": "http://localhost:5000/api/matches/1",
+          "headers": []
+        },
+        {
+          "name": "Get Super Over Matches",
+          "method": "GET",
+          "url": "http://localhost:5000/api/matches/super-overs",
+          "headers": []
+        },
+        {
+          "name": "Get Final Matches",
+          "method": "GET",
+          "url": "http://localhost:5000/api/matches/finals",
+          "headers": []
+        },
+        {
+          "name": "Get Highest Margins",
+          "method": "GET",
+          "url": "http://localhost:5000/api/matches/highest-margins",
+          "headers": []
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "requests": [
+        {
+          "name": "Overall Ranking",
+          "method": "GET",
+          "url": "http://localhost:5000/api/analytics/overall-ranking",
+          "headers": []
+        },
+        {
+          "name": "Toss Impact",
+          "method": "GET",
+          "url": "http://localhost:5000/api/analytics/toss-impact",
+          "headers": []
+        },
+        {
+          "name": "Venue Stats",
+          "method": "GET",
+          "url": "http://localhost:5000/api/analytics/venue-stats",
+          "headers": []
+        },
+        {
+          "name": "Head to Head",
+          "method": "GET",
+          "url": "http://localhost:5000/api/analytics/head-to-head?team1=Mumbai&team2=Chennai",
+          "headers": []
+        },
+        {
+          "name": "Season Awards",
+          "method": "GET",
+          "url": "http://localhost:5000/api/analytics/season-awards",
+          "headers": []
+        },
+        {
+          "name": "Season Ranking",
+          "method": "GET",
+          "url": "http://localhost:5000/api/analytics/season-ranking/1",
+          "headers": []
+        },
+        {
+          "name": "Get All Venues",
+          "method": "GET",
+          "url": "http://localhost:5000/api/analytics/venues",
+          "headers": []
+        },
+        {
+          "name": "Get Venue Detail",
+          "method": "GET",
+          "url": "http://localhost:5000/api/analytics/venue/1",
+          "headers": []
+        }
+      ]
+    }
+  ]
+}

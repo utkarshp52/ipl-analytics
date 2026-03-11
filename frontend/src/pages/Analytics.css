@@ -1,0 +1,103 @@
+.analytics-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.analytics-header h1 {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text-primary);
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.analytics-header p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+.analytics-section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: var(--glass-shadow);
+}
+
+.analytics-section h2 {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+.section-description {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.chart-container {
+  height: 400px;
+  margin-bottom: 2rem;
+}
+
+.toss-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.stat-box {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.6);
+}
+
+.stat-box h3 {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text-primary);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.stat-number {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--accent-primary);
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.stat-box p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .chart-container {
+    height: 300px;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+}
