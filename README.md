@@ -180,11 +180,11 @@ Frontend will run on `http://localhost:3000`
 - **Historical Trends**: Win percentage evolution over seasons
 
 ## 📸 Screenshots
-![Home Page](image.png)
-![Seasons Page ](image-1.png)
-![Teams Page](image-2.png)
-![Analyics Page](image-3.png)
-![Head to Head Page](image-4.png)
+![Home Page](/Screenshots/image.png)
+![Seasons Page ](/Screenshots/image-1.png)
+![Teams Page](/Screenshots/image-2.png)
+![Analyics Page](/Screenshots/image-3.png)
+![Head to Head Page](/Screenshots/image-4.png)
 - Home Page
 - Overall Rankings
 - Team Detail with Historical Chart
