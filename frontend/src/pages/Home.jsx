@@ -15,7 +15,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchHomeData();
-    }, [fetchHomeData]);
+    }, []);
 
     const fetchHomeData = async () => {
         try {
