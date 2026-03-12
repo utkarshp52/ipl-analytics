@@ -12,7 +12,7 @@ const OverallRanking = () => {
 
   useEffect(() => {
     fetchRankings();
-  }, [fetchRankings]);
+  }, []);
 
   const fetchRankings = async () => {
     try {

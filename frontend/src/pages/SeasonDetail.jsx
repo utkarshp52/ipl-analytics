@@ -16,8 +16,8 @@ const SeasonDetail = () => {
   const [activeTab, setActiveTab] = useState('points'); // 'points' or 'matches'
 
   useEffect(() => {
-  fetchSeasonData();
-}, [fetchSeasonData]);
+    fetchSeasonData();
+  }, [id]);
 
   const fetchSeasonData = async () => {
     try {

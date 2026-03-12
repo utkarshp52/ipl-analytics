@@ -41,7 +41,7 @@ const TeamDetail = () => {
 
 useEffect(() => {
   fetchTeamData();
-}, [fetchTeamData]);
+}, [id]);
 
   const fetchTeamData = async () => {
     try {
