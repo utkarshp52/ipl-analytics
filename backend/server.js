@@ -98,3 +98,26 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
 });
+// ... all your existing code ...
+
+// Start server
+const startServer = async () => {
+  try {
+    await testConnection();
+    app.listen(PORT, () => {
+      console.log('=================================');
+      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(`📍 API URL: http://localhost:${PORT}/api`);
+      console.log(`🏥 Health: http://localhost:${PORT}/api/health`);
+      console.log('=================================');
+    });
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
+};
+
+startServer();
+
+// Export for Vercel serverless
+module.exports = app;
