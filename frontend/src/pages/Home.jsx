@@ -102,7 +102,8 @@ const Home = () => {
                     </motion.div>
                 </div>
             </section>
-
+<br />
+<br />
             {/* Quick Navigation Features */}
             <section className="features-wrapper">
                 <motion.div
