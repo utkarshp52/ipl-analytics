@@ -11,6 +11,7 @@ import './App.css';
 import SeasonDetail from './pages/SeasonDetail';
 import TeamDetail from './pages/TeamDetail';
 import HeadtoHead from './pages/HeadtoHead';
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 
 function App() {
   // Theme Management
@@ -44,6 +45,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <VercelAnalytics />
       </div>
     </Router>
   );
