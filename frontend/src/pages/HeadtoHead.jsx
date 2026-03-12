@@ -3,7 +3,7 @@ import { getAllTeams, getHeadToHead } from '../services/api';
 import Loader from '../components/Loader';
 import TeamLogo from '../components/TeamLogo';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp, Swords, Trophy, Activity } from 'lucide-react';
+import { ChevronDown, ChevronUp, Swords, Trophy, } from 'lucide-react';
 import './HeadtoHead.css';
 
 const HeadtoHead = () => {

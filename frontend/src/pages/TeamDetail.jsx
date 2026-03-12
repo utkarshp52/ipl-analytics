@@ -39,9 +39,9 @@ const TeamDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetchTeamData();
-  }, [id]);
+useEffect(() => {
+  fetchTeamData();
+}, [fetchTeamData]);
 
   const fetchTeamData = async () => {
     try {

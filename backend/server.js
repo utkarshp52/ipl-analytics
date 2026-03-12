@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 // Load env vars
 dotenv.config();
 
+const { testConnection } = require('./config/database');
+
 // Initializing express application
 const app = express();
 
@@ -95,10 +97,6 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-});
-// ... all your existing code ...
 
 // Start server
 const startServer = async () => {
