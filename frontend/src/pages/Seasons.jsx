@@ -12,7 +12,7 @@ const Seasons = () => {
 
     useEffect(() => {
         fetchSeasons();
-    }, []);
+    }, [fetchSeasons]);
 
     const fetchSeasons = async () => {
         try {

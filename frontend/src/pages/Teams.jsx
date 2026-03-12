@@ -16,7 +16,7 @@ const Teams = () => {
 
   useEffect(() => {
     fetchTeams();
-  }, []);
+  }, [fetchTeams]);
 
   const fetchTeams = async () => {
     try {
