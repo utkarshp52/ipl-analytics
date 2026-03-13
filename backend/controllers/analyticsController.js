@@ -6,7 +6,12 @@ const { pool } = require('../config/database');
 // ============================================
 exports.getOverallRanking = async (req, res, next) => {
   try {
-    const query = 'SELECT * FROM overall_ranking_view ORDER BY total_wins DESC';
+    const query = `
+      SELECT t.team_id, t.team_name, o.total_matches, o.total_wins, o.total_losses, o.total_points, o.win_percentage
+      FROM overall_ranking o
+      JOIN team t ON o.team_id = t.team_id
+      ORDER BY o.total_wins DESC
+    `;
     const [rankings] = await pool.query(query);
 
     res.status(200).json({
