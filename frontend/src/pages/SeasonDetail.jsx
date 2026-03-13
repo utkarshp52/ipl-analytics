@@ -112,8 +112,8 @@ const SeasonDetail = () => {
                   <th>Played</th>
                   <th>Won</th>
                   <th>Lost</th>
+                  <th>NR</th>
                   <th>Points</th>
-                  <th>NRR</th>
                 </tr>
               </thead>
               <tbody>
@@ -123,13 +123,11 @@ const SeasonDetail = () => {
                       {index === 0 ? '🏆' : index + 1}
                     </td>
                     <td className="team-name">{team.team_name}</td>
-                    <td>{team.matches_played ?? '-'}</td>
-                    <td className="wins">{team.wins ?? '-'}</td>
-                    <td>{team.losses ?? '-'}</td>
-                    <td className="points">{team.points ?? '-'}</td>
-                    <td className={team.net_run_rate != null && team.net_run_rate >= 0 ? 'positive' : team.net_run_rate != null ? 'negative' : ''}>
-                      {team.net_run_rate != null ? `${team.net_run_rate >= 0 ? '+' : ''}${team.net_run_rate}` : 'N/A'}
-                    </td>
+                    <td>{team.matches_played}</td>
+                    <td className="wins">{team.wins}</td>
+                    <td>{team.losses}</td>
+                    <td>{team.no_result}</td>
+                    <td className="points">{team.points}</td>
                   </tr>
                 ))}
               </tbody>

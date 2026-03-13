@@ -54,19 +54,30 @@ exports.getSeasonPoints = async (req, res, next) => {
   try {
     const { id } = req.params;
 
+    // Compute points table dynamically from raw_matches (league matches only)
+    // This gives accurate results instead of relying on the pre-stored points_table
     const query = `
       SELECT 
         t.team_id,
         t.team_name,
-        pt.matches_played,
-        pt.wins,
-        pt.losses,
-        pt.points,
-        pt.net_run_rate
-      FROM points_table pt
-      JOIN team t ON pt.team_id = t.team_id
-      WHERE pt.season_id = ?
-      ORDER BY pt.points DESC, pt.net_run_rate DESC
+        COUNT(*) AS matches_played,
+        SUM(CASE WHEN rm.winner = t.team_name THEN 1 ELSE 0 END) AS wins,
+        SUM(CASE 
+          WHEN rm.winner IS NOT NULL AND rm.winner != '' AND rm.winner != 'NA' AND rm.winner != t.team_name 
+          THEN 1 ELSE 0 
+        END) AS losses,
+        SUM(CASE 
+          WHEN rm.winner IS NULL OR rm.winner = '' OR rm.winner = 'NA' 
+          THEN 1 ELSE 0 
+        END) AS no_result,
+        SUM(CASE WHEN rm.winner = t.team_name THEN 1 ELSE 0 END) * 2 
+          + SUM(CASE WHEN rm.winner IS NULL OR rm.winner = '' OR rm.winner = 'NA' THEN 1 ELSE 0 END) AS points
+      FROM team t
+      INNER JOIN raw_matches rm 
+        ON (rm.team1 = t.team_name OR rm.team2 = t.team_name)
+      WHERE rm.season = ? AND rm.match_type = 'League'
+      GROUP BY t.team_id, t.team_name
+      ORDER BY points DESC, wins DESC
     `;
 
     const [points] = await pool.query(query, [id]);
