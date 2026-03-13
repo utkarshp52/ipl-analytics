@@ -295,6 +295,91 @@
   text-align: center;
 }
 
+/* ============================================ */
+/* Dark Mode Overrides                          */
+/* ============================================ */
+
+[data-theme='dark'] .back-btn {
+  background: #2d3748;
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .back-btn:hover {
+  background: #4a5568;
+}
+
+[data-theme='dark'] .points-table-container {
+  background: #1a1a2e;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .points-table td {
+  color: #e2e8f0;
+  border-bottom: 1px solid #2d3748;
+}
+
+[data-theme='dark'] .points-table tbody tr:hover {
+  background: #2d3748;
+}
+
+[data-theme='dark'] .points-table .winner {
+  background: rgba(255, 248, 225, 0.1);
+}
+
+[data-theme='dark'] .team-name {
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .position {
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .tabs {
+  border-bottom-color: #2d3748;
+}
+
+[data-theme='dark'] .tab {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .match-card {
+  background: #1a1a2e;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .match-header {
+  border-bottom-color: #2d3748;
+}
+
+[data-theme='dark'] .match-date {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .team {
+  background: #2d3748;
+}
+
+[data-theme='dark'] .winner-team {
+  background: rgba(39, 174, 96, 0.15);
+  border-color: #27ae60;
+}
+
+[data-theme='dark'] .vs {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .venue {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .result {
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .player-of-match {
+  border-top-color: #2d3748;
+}
+
 @media (max-width: 768px) {
   .season-detail-header h1 {
     font-size: 2rem;
