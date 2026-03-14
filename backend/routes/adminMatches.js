@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { isAdmin } = require('../middleware/adminauth');
+const { isAdmin } = require('../middleware/adminAuth');
 const {
   getAllMatches,
   getMatchById,
