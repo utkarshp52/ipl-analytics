@@ -79,7 +79,7 @@ const Seasons = () => {
 
                         <button
                             className="view-details-btn"
-                            onClick={() => navigate(`/season/${season.year}`)}
+                            onClick={() => navigate(`/seasons/${season.season_id}`)}
                         >
                             View Details
                         </button>

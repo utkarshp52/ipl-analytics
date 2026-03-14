@@ -230,3 +230,103 @@ exports.getAllVenues = async (req, res, next) => {
     next(error);
   }
 };
+// ============================================
+// GET DETAILED VENUE ANALYTICS
+// GET /api/analytics/venue-details
+// ============================================
+exports.getVenueDetails = async (req, res, next) => {
+  try {
+    const query = `
+      SELECT 
+        v.venue_id,
+        v.venue_name,
+        v.city,
+        v.state,
+        v.country,
+        v.capacity,
+        v.pitch_type,
+        v.total_matches,
+        v.avg_target_runs,
+        COUNT(DISTINCT rm.season) as seasons_hosted,
+        COUNT(CASE WHEN rm.result = 'runs' THEN 1 END) as batting_first_wins,
+        COUNT(CASE WHEN rm.result = 'wickets' THEN 1 END) as chasing_wins,
+        ROUND(
+          (COUNT(CASE WHEN rm.result = 'runs' THEN 1 END) * 100.0 / 
+          NULLIF(COUNT(rm.id), 0)), 2
+        ) as batting_first_win_percentage,
+        ROUND(
+          (COUNT(CASE WHEN rm.result = 'wickets' THEN 1 END) * 100.0 / 
+          NULLIF(COUNT(rm.id), 0)), 2
+        ) as chasing_win_percentage,
+        GROUP_CONCAT(DISTINCT rm.season ORDER BY rm.season SEPARATOR ', ') as seasons_list
+      FROM venue v
+      LEFT JOIN raw_matches rm ON v.venue_name = rm.venue
+      WHERE v.total_matches > 0
+      GROUP BY v.venue_id, v.venue_name, v.city, v.state, v.country, 
+               v.capacity, v.pitch_type, v.total_matches, v.avg_target_runs
+      ORDER BY v.total_matches DESC
+    `;
+
+    const [venues] = await pool.query(query);
+
+    res.status(200).json({
+      success: true,
+      count: venues.length,
+      data: venues
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// ============================================
+// GET SINGLE VENUE DETAILED INFO
+// GET /api/analytics/venue-details/:id
+// ============================================
+exports.getVenueDetailById = async (req, res, next) => {
+  try {
+    const venueId = req.params.id;
+
+    const venueQuery = `
+      SELECT 
+        v.*,
+        COUNT(rm.id) as actual_matches_count,
+        COUNT(DISTINCT rm.season) as seasons_hosted,
+        GROUP_CONCAT(DISTINCT rm.season ORDER BY rm.season SEPARATOR ', ') as seasons_list
+      FROM venue v
+      LEFT JOIN raw_matches rm ON v.venue_name = rm.venue
+      WHERE v.venue_id = ?
+      GROUP BY v.venue_id
+    `;
+
+    const matchesQuery = `
+      SELECT 
+        rm.*
+      FROM raw_matches rm
+      JOIN venue v ON rm.venue = v.venue_name
+      WHERE v.venue_id = ?
+      ORDER BY rm.date DESC
+      LIMIT 10
+    `;
+
+    const [venueData] = await pool.query(venueQuery, [venueId]);
+    const [recentMatches] = await pool.query(matchesQuery, [venueId]);
+
+    if (venueData.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Venue not found'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: {
+        venue: venueData[0],
+        recentMatches: recentMatches
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+};

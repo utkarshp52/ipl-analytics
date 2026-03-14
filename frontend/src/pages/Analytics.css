@@ -101,3 +101,210 @@
     font-size: 2.5rem;
   }
 }
+/* Venue Details Section */
+.venue-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.venue-detail-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.venue-detail-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.venue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.venue-header h3 {
+  color: #2c3e50;
+  font-size: 1.2rem;
+  margin: 0;
+  flex: 1;
+}
+
+.venue-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: #7f8c8d;
+  font-size: 0.95rem;
+}
+
+.country-tag {
+  background: #ecf0f1;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.venue-stats-mini {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.stat-mini-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.venue-avg-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.score-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.score-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.venue-win-stats {
+  margin-bottom: 1rem;
+}
+
+.win-stat {
+  margin-bottom: 0.8rem;
+}
+
+.win-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-bottom: 0.3rem;
+}
+
+.win-bar {
+  height: 30px;
+  background: #ecf0f1;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.win-bar-fill {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+  transition: width 0.5s ease;
+}
+
+.win-bar-fill.bat-first {
+  background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+}
+
+.win-bar-fill.chasing {
+  background: linear-gradient(90deg, #27ae60 0%, #229954 100%);
+}
+
+.seasons-hosted {
+  padding-top: 1rem;
+  border-top: 1px solid #ecf0f1;
+  font-size: 0.85rem;
+}
+
+.seasons-label {
+  color: #7f8c8d;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.seasons-value {
+  color: #2c3e50;
+}
+
+/* Pitch Type Badges - Update existing or add */
+.pitch-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pitch-badge.flat {
+  background: #3498db;
+  color: white;
+}
+
+.pitch-badge.spinning {
+  background: #9b59b6;
+  color: white;
+}
+
+.pitch-badge.seaming {
+  background: #27ae60;
+  color: white;
+}
+
+.pitch-badge.unknown {
+  background: #95a5a6;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .venue-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .venue-stats-mini {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .venue-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

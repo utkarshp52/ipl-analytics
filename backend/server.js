@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const session = require('express-session');
 
 // Load env vars
 dotenv.config();
@@ -14,13 +15,40 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS
-app.use(cors());
+// app.use(cors());
 
+// ... existing code ...
+
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// Add this session configuration
+app.use(session({
+  secret: 'ipl-analytics-secret-key-2024', // Change this to a secure random string
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // Set to true in production with HTTPS
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
+}));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ... rest of your code ...
 // Import routes
 const seasonRoutes = require('./routes/seasons');
 const teamRoutes = require('./routes/teams');
 const matchRoutes = require('./routes/matches');
 const analyticsRoutes = require('./routes/analytics');
+const adminAuthRoutes = require('./routes/adminAuth');
+const adminMatchRoutes = require('./routes/adminMatches');
 
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
@@ -30,6 +58,8 @@ app.use('/api/seasons', seasonRoutes);
 app.use('/api/teams', teamRoutes);
 app.use('/api/matches', matchRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/admin', adminAuthRoutes);
+app.use('/api/admin/matches', adminMatchRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {

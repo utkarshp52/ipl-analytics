@@ -10,7 +10,9 @@ const {
   getSeasonAwards,
   getSeasonRanking,
   getVenueDetail,
-  getAllVenues
+  getAllVenues,
+  getVenueDetails,        
+  getVenueDetailById  
 } = require('../controllers/analyticsController');
 
 // ============================================
@@ -57,5 +59,7 @@ router.get('/venues', getAllVenues);
 // @desc    Get detailed venue information
 // @access  Public
 router.get('/venue/:venue_id', getVenueDetail);
+router.get('/venue-details', getVenueDetails);          
+router.get('/venue-details/:id', getVenueDetailById); 
 
 module.exports = router;

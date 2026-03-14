@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { motion } from 'framer-motion';
 import Loader from '../components/Loader';
+import { getVenueDetails } from '../services/api';
 import './Analytics.css';
 
 // Register Chart.js components
@@ -29,6 +30,10 @@ const Analytics = () => {
     const [venueData, setVenueData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [venueStats, setVenueStats] = useState([]);
+    const [selectedVenue, setSelectedVenue] = useState(null);
+    const [venueLoading, setVenueLoading] = useState(false);//sd
+    const [venueError, setVenueError] = useState(null);//sd
 
     useEffect(() => {
         fetchAnalytics();
@@ -39,13 +44,15 @@ const Analytics = () => {
             setLoading(true);
             setError(null);
 
-            const [tossResponse, venueResponse] = await Promise.all([
+            const [tossResponse, venueStatsResponse, venueDetailsResponse] = await Promise.all([
                 getTossImpact(),
-                getVenueStats()
+                getVenueStats(),
+                getVenueDetails()
             ]);
 
             setTossData(tossResponse.data.data);
-            setVenueData(venueResponse.data.data.slice(0, 10)); // Top 10 venues
+            setVenueData(venueStatsResponse.data.data.slice(0, 10)); // Top 10 venues
+            setVenueStats(venueDetailsResponse.data.data.slice(0, 2));
         } catch (err) {
             console.error('Error fetching analytics:', err);
             setError('Failed to load analytics. Please try again.');
@@ -197,6 +204,88 @@ const Analytics = () => {
 
                 <div className="chart-container">
                     <Bar data={venueChartData} options={chartOptions} />
+                </div>
+            </motion.div>
+            {/* Venue Details Section - NEW */}
+            <motion.div
+                className="analytics-section"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+            >
+                <h2>🏟️ Detailed Venue Analytics</h2>
+                <div className="venue-details-grid">
+                    {venueStats.slice(0, 10).map((venue) => (
+                        <div key={venue.venue_id} className="venue-detail-card">
+                            <div className="venue-header">
+                                <h3>{venue.venue_name}</h3>
+                                <span className={`pitch-badge ${venue.pitch_type?.toLowerCase()}`}>
+                                    {venue.pitch_type || 'Unknown'}
+                                </span>
+                            </div>
+
+                            <div className="venue-location">
+                                <span>📍 {venue.city}, {venue.state}</span>
+                                {venue.country && <span className="country-tag">{venue.country}</span>}
+                            </div>
+
+                            <div className="venue-stats-mini">
+                                <div className="stat-mini-item">
+                                    <span className="stat-label">Capacity</span>
+                                    <span className="stat-value">
+                                        {venue.capacity ? venue.capacity.toLocaleString() : 'N/A'}
+                                    </span>
+                                </div>
+                                <div className="stat-mini-item">
+                                    <span className="stat-label">Matches</span>
+                                    <span className="stat-value">{venue.total_matches}</span>
+                                </div>
+                                <div className="stat-mini-item">
+                                    <span className="stat-label">Seasons</span>
+                                    <span className="stat-value">{venue.seasons_hosted || 0}</span>
+                                </div>
+                            </div>
+
+                            <div className="venue-avg-score">
+                                <span className="score-label">Average Target Score</span>
+                                <span className="score-value">
+                                    {venue.avg_target_runs ? Math.round(venue.avg_target_runs) : 'N/A'}
+                                </span>
+                            </div>
+
+                            <div className="venue-win-stats">
+                                <div className="win-stat">
+                                    <span className="win-label">Bat First Wins</span>
+                                    <div className="win-bar">
+                                        <div
+                                            className="win-bar-fill bat-first"
+                                            style={{ width: `${venue.batting_first_win_percentage || 0}%` }}
+                                        >
+                                            {venue.batting_first_win_percentage || 0}%
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="win-stat">
+                                    <span className="win-label">Chasing Wins</span>
+                                    <div className="win-bar">
+                                        <div
+                                            className="win-bar-fill chasing"
+                                            style={{ width: `${venue.chasing_win_percentage || 0}%` }}
+                                        >
+                                            {venue.chasing_win_percentage || 0}%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {venue.seasons_list && (
+                                <div className="seasons-hosted">
+                                    <span className="seasons-label">Seasons:</span>
+                                    <span className="seasons-value">{venue.seasons_list}</span>
+                                </div>
+                            )}
+                        </div>
+                    ))}
                 </div>
             </motion.div>
         </motion.div>

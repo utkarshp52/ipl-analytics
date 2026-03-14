@@ -49,5 +49,7 @@ export const getSeasonAwards = () => api.get('/analytics/season-awards');
 export const getSeasonRanking = (seasonId) => api.get(`/analytics/season-ranking/${seasonId}`);
 export const getAllVenues = () => api.get('/analytics/venues');
 export const getVenueDetail = (venueId) => api.get(`/analytics/venue/${venueId}`);
+export const getVenueDetails = () => api.get('/analytics/venue-details');
+export const getVenueDetailById = (id) => api.get(`/analytics/venue-details/${id}`);
 
 export default api;

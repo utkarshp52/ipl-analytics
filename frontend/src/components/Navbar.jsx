@@ -15,6 +15,7 @@ const Navbar = ({ theme, toggleTheme }) => {
     { name: 'Analytics', path: '/analytics' },
     { name: 'Rankings', path: '/ranking' },
     { name: 'Head to Head', path: '/head-to-head' },
+    { name: 'Admin', path: '/admin/login' },
   ];
 
   return (
