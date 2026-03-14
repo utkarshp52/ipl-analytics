@@ -52,6 +52,7 @@ const adminMatchRoutes = require('./routes/adminMatches');
 
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
+const adminAuth = require('../middleware/adminAuth');
 
 // Mount routes
 app.use('/api/seasons', seasonRoutes);
